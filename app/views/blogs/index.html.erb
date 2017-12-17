@@ -3,12 +3,12 @@
 
 <div>
 <% @blog.each do |blog| %>
-  <div><%= blog.title %></div>
+  <div><%= link_to blog.title, blog_path(blog) %></div>
  <div><%= image_tag blog.image unless blog.image.nil? %></div>
   <div><%= blog.subtitle %></div>
   <div><%= blog.body %></div>
-  <div><%= link_to "change me", edit_blog_path(blog) %></div>
-  <div><%= link_to 'delete', blog, method: :delete, data: {confirm: 'super sure?'} %></div>
+  <div><%= link_to "change me", edit_blog_path(blog) if logged_in?(:site_admin) %></div>
+  <div><%= link_to 'delete', blog, method: :delete, data: {confirm: 'super sure?'} if logged_in?(:site_admin) %></div>
 <% end %>
 
 <div>
