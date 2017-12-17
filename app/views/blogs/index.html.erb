@@ -1,0 +1,14 @@
+<h1> Can you see my index page?</h1>
+<%= link_to 'make yerself a new blog', new_blog_path %>
+
+<div>
+<% @blog.each do |blog| %>
+  <div><%= blog.title %></div>
+ <div><%= image_tag blog.image unless blog.image.nil? %></div>
+  <div><%= blog.subtitle %></div>
+  <div><%= blog.body %></div>
+  <div><%= link_to "change me", edit_blog_path(blog) %></div>
+  <div><%= link_to 'delete', blog, method: :delete, data: {confirm: 'super sure?'} %></div>
+<% end %>
+
+<div>
